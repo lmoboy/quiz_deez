@@ -1,8 +1,8 @@
 //vlada uzdevums
 /*
-1. Saņemt datus no datubāzes kad kevins beidzot izies no kovida komas (pagaidam taisi savu sarakstu)
-2. Izvadit top 10 cilvēkus
-3. Vajag izvadīt vārdus un cik tika uzminēts pēc kārtas (mūsu gadijumā no 1 līdz 50)
+1. Получи данные с сервера (когда кевин из комы выйдет перепишешь ока?)
+2. Выведи топ 10 людей из тех самых данных (у тебя ниже пример)
+3. Надо вывести имя и очки для каждого из 10 юзеров (ниже пример можешь туда добавить)
 */
 
 const piemers = [
@@ -14,6 +14,7 @@ const piemers = [
 ];
 
 /*
-izmanto šo lai testēt highscore tabulu
+Изолируй код, то есть пиши так что бы другие аспекты сайта не ломались.
+
 
 */
