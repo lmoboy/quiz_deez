@@ -14,6 +14,10 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/quiz', function() {
+    return Inertia::render('Quiz');
+})->middleware(['auth', 'verified'])->name('quiz');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
