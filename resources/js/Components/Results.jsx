@@ -16,17 +16,47 @@
  *   ]}
  * />
  */
+import { decode } from "html-entities";
 export default function Results({ questions, correct }) {
+    const correctAnswers = questions.filter(
+        (question, index) => question.correct_answer === correct[index]
+    );
+
     return (
-        <div className="text-center">
+        <div className="text-center border-2 p-2 rounded-xl border-black">
             <h2 className="text-3xl font-bold">
-                You scored {correct} out of {questions.length}
+                You scored {correctAnswers.length} out of {questions.length}
             </h2>
+
+            <ul>
+                {questions.map((question, index) => (
+                    <li
+                        key={index}
+                        className={`${
+                            correct[index] === question.correct_answer
+                                ? "text-green-500"
+                                : "text-red-500"
+                        }`}
+                    >
+                        {decode(question.question)}
+                    </li>
+                ))}
+            </ul>
+
+            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                Submit score
+            </button>
+            <button
+                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                onClick={() => window.location.reload()}
+            >
+                Play Again
+            </button>
         </div>
     );
 }
 
 Results.propTypes = {
     questions: [],
-    correct: 0,
-}
+    correct: [],
+};

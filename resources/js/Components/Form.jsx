@@ -25,7 +25,7 @@ export default function Form({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="border-2">
             <label htmlFor="trivia_amount">Number of Questions:</label>
             <input
                 type="number"

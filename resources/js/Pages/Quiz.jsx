@@ -1,12 +1,13 @@
 "use client";
 
 import Form from "@/Components/Form";
-import Results from "@/Components/Results";
+// import Results from "@/Components/Results";
 import QuizCard from "@/Components/QuizCard";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { useState } from "react";
 import anime from "animejs";
+import Results from "@/Components/Results";
 /**
  * The Quiz component serves as the main container for the quiz application. It handles the
  * initiation of the quiz by displaying a form for user input, fetching quiz questions based on
@@ -24,13 +25,15 @@ export default function Quiz() {
     const [questions, setQuestions] = useState([]);
     const [loading, setLoading] = useState(false);
     const [current, setCurrent] = useState(0);
-    const [correct, setCorrect] = useState(0);
+    const [correct, setCorrect] = useState([]);
     const [finished, setFinished] = useState(false);
 
     const handleAnswer = (isCorrect) => {
         setCurrent(current + 1);
-        setCorrect(correct + isCorrect);
-        console.log(current, correct, isCorrect);
+        setCorrect([...correct, isCorrect]);
+        if (current + 1 === questions.length) {
+            setFinished(true);
+        }
     };
 
     /**
@@ -76,26 +79,31 @@ export default function Quiz() {
     };
 
     let content;
-    if (loading) {
+    if (loading && !finished) {
         content = "loading";
-    } else if (questions.length) {
+    } else if (questions.length && !finished) {
         content = questions.map((element, key) => {
-            // anime({
-            //     targets: `.quiz`,
-            //     opacity: [0, 1],
-            //     duration: 1000,
-            //     easing: "easeInOutSine",
-            //     translateX: [1000, 0],
-            // });
+            let direction = key === current;
+            anime({
+                targets: ".quiz",
+                duration: 250,
+                opacity: [0, 1],
+                translateX: [100, 0],
+                easing: "easeInOutQuad",
+            });
             return (
                 <QuizCard
                     quiz={element}
-                    id={key}
+                    key={key}
                     onAnswer={handleAnswer}
-                    className={key === current ? "visible" : " hidden " + "quiz"}
+                    className={
+                        (direction ? " visible " : " hidden ") + " quiz "
+                    }
                 />
             );
         });
+    } else if (!loading && finished) {
+        content = <Results correct={correct} questions={questions}></Results>;
     } else {
         content = <Form onSubmit={handleFormSubmit} />;
     }
@@ -112,7 +120,7 @@ export default function Quiz() {
             <div className="flex items-center justify-center w-full h-screen">
                 <div
                     id="quiz_container"
-                    className="w-[499px] text-black  h-[548px] py-10 px-2 justify-center font-mono text-sm lg:flex bg-white border-slate-700 border-2 rounded-3xl"
+                    className="bg-white h-full w-full justify-center items-center flex "
                 >
                     {content}
                 </div>
