@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Quiz;
+use App\Http\Controllers\QuizControllers;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -29,13 +29,13 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     
 
-    Route::get('/quiz/index', [Quiz::class, 'index']); //Inertia::render('Dashboard')
-    Route::get('/quiz/{id}', [Quiz::class, 'show']); //Inertia::render('Dashboard')
-    Route::post('/quiz/create', [Quiz::class, 'create']); 
-    Route::get('/quiz/new', [Quiz::class, 'new']); //Inertia::render('Dashboard')
-    Route::get('/quiz/{id}/edit', [Quiz::class, 'edit']); //Inertia::render('Dashboard')
-    Route::put('/quiz/{id]', [Quiz::class, 'update']);
-    Route::delete('/quiz/{id}', [Quiz::class, 'destroy']);
+    Route::get('/quiz/index', [QuizControllers::class, 'index']); //Inertia::render('Dashboard')
+    Route::get('/quiz/{id}', [QuizControllers::class, 'show']); //Inertia::render('Dashboard')
+    Route::post('/quiz/create', [QuizControllers::class, 'create']); 
+    Route::get('/quiz/new', [QuizControllers::class, 'new']); //Inertia::render('Dashboard')
+    Route::get('/quiz/{id}/edit', [QuizControllers::class, 'edit']); //Inertia::render('Dashboard')
+    Route::put('/quiz/{id]', [QuizControllers::class, 'update']);
+    Route::delete('/quiz/{id}', [QuizControllers::class, 'destroy']);
 
 });
 
