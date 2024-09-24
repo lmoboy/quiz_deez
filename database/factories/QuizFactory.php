@@ -18,9 +18,9 @@ class QuizFactory extends Factory
     {
         return [
             'owner_id' => random_int(1, 10),
-            'qestion' => fake()->sentence(),
-            'completione_count' => 0,
-            'answers'=> json_encode([fake()->word(),fake()->word(),fake()->word()]),
+            'question' => fake()->sentence(),
+            'completion_count' => 0,
+            'incorrect_answers'=> json_encode([fake()->word(), fake()->word(), fake()->word()]),
             'correct_answer' => fake()->word(),
         ];
     }

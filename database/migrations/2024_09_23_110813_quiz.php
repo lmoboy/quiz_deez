@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('quizzes', function (Blueprint $table) {
             $table->id();
             $table->integer('owner_id');
-            $table->string('qestion');
-            $table->integer('completione_count')->default(0);
-            $table->json('answers');
+            $table->string('question');
+            $table->integer('completion_count')->default(0);
+            $table->json('incorrect_answers');
             $table->string('correct_answer');
             $table->timestamps();
         });

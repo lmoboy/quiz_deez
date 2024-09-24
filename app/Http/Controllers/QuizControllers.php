@@ -5,7 +5,7 @@ use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
 
-abstract class QuizControllers
+class QuizControllers
 {
     /**
      * Shows the main dashboard page with all quzzes
@@ -13,7 +13,12 @@ abstract class QuizControllers
      * @return \Inertia\Response
      */
     public function index() {
-        return Inertia::render('Dashboard' , ['quizzes' => [Quiz::all() ?? []]]);
+        $quizzes = Quiz::all();
+        $quizzes->map(function ($quiz) {
+            $quiz->incorrect_answers = json_decode($quiz->incorrect_answers);
+            return $quiz;
+        });
+        return response()->json($quizzes);
     }
 
     /**
@@ -23,7 +28,7 @@ abstract class QuizControllers
      * @return \Inertia\Response
      */
     public function show($id) {
-        return Inertia::render('Quiz/show' , ['quiz' => [Quiz::findorfail($id) ?? []]]);
+        return response()->json(['quiz' => Quiz::findorfail($id) ?? ['peepeepoopoo']]);
     }
 
     /**

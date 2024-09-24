@@ -13,10 +13,10 @@ class Quiz extends Model
 
     protected $fillable = [
         'owner_id',
-        'qestion',
-        'completione_count',
-        'answers',
-        'correct_answer',
+        'question',
+        'completion_count',
+        'incorrect_answers',
+        'correct_answer'
     ];
 
 }

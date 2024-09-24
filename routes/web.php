@@ -15,7 +15,12 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/quiz', function() {
+Route::get('/test', function () {
+    return Inertia::render('PlayArea');
+})->middleware(['auth', 'verified'])->name('test');
+
+
+Route::get('/quiz', function () {
     return Inertia::render('Quiz');
 })->middleware(['auth', 'verified'])->name('quiz');
 
@@ -27,11 +32,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
 
-    Route::get('/quiz/index', [QuizControllers::class, 'index']); //Inertia::render('Dashboard')
-    Route::get('/quiz/{id}', [QuizControllers::class, 'show']); //Inertia::render('Dashboard')
-    Route::post('/quiz/create', [QuizControllers::class, 'create']); 
+
+    Route::get('/quiz/index', [QuizControllers::class, 'index']); //returns a list of all quizes
+    Route::get('/quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
+    Route::post('/quiz/create', [QuizControllers::class, 'create']);
     Route::get('/quiz/new', [QuizControllers::class, 'new']); //Inertia::render('Dashboard')
     Route::get('/quiz/{id}/edit', [QuizControllers::class, 'edit']); //Inertia::render('Dashboard')
     Route::put('/quiz/{id]', [QuizControllers::class, 'update']);
@@ -39,4 +44,4 @@ Route::middleware('auth')->group(function () {
 
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

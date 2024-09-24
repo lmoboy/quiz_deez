@@ -36,6 +36,12 @@ export default function Authenticated({ header, children }) {
                                 >
                                     Quiz
                                 </NavLink>
+                                <NavLink
+                                    href={route("test")}
+                                    active={route().current("test")}
+                                >
+                                    Play area
+                                </NavLink>
                             </div>
                         </div>
 
