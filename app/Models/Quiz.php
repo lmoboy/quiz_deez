@@ -16,7 +16,8 @@ class Quiz extends Model
         'question',
         'completion_count',
         'incorrect_answers',
-        'correct_answer'
+        'correct_answer',
+        'category'
     ];
 
 }

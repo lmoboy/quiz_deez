@@ -48,10 +48,12 @@ class QuizControllers
             'question' => 'required',
             'incorrect_answers' => 'required',
             'correct_answer' => 'required',
+            'category' => 'required',
         ]);
 
         $quiz = new Quiz();
         $quiz->owner_id = $request->owner_id;
+        $quiz->category = $request->category;
         $quiz->question = $request->question;
         $quiz->answers = $request->answers;
         $quiz->correct_answer = $request->correct_answer;
@@ -73,10 +75,12 @@ class QuizControllers
             'question' => 'required',
             'incorrect_answers' => 'required',
             'correct_answer' => 'required',
+            'category' => 'required',
         ]);
 
         $quiz = Quiz::findorfail($request->id);
         $quiz->question = $request->question;
+        $quiz->category = $request->category;
         $quiz->answers = $request->answers;
         $quiz->correct_answer = $request->correct_answer;
         $quiz->save();

@@ -22,6 +22,7 @@ class QuizFactory extends Factory
             'completion_count' => 0,
             'incorrect_answers'=> json_encode([fake()->word(), fake()->word(), fake()->word(),fake()->word(), fake()->word(), fake()->word()]),
             'correct_answer' => fake()->word(),
+            'category' => fake()->word(),
         ];
     }
 }

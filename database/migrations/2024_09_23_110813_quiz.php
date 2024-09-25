@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->integer('owner_id');
             $table->string('question');
+            $table->string('category');
             $table->integer('completion_count')->default(0);
             $table->json('incorrect_answers');
             $table->string('correct_answer');
