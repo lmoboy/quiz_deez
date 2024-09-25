@@ -15,6 +15,34 @@ export default function Form({ onSubmit }) {
         trivia_difficulty: "",
         trivia_type: "",
     });
+    const categories = [
+        { value: "9", name: "General Knowledge" },
+        { value: "10", name: "Entertainment: Books" },
+        { value: "11", name: "Entertainment: Film" },
+        { value: "12", name: "Entertainment: Music" },
+        { value: "13", name: "Entertainment: Musicals & Theatres" },
+        { value: "14", name: "Entertainment: Television" },
+        { value: "15", name: "Entertainment: Video Games" },
+        { value: "16", name: "Entertainment: Board Games" },
+        { value: "17", name: "Science & Nature" },
+        { value: "18", name: "Science: Computers" },
+        { value: "19", name: "Science: Mathematics" },
+        { value: "20", name: "Mythology" },
+        { value: "21", name: "Sports" },
+        { value: "22", name: "Geography" },
+        { value: "23", name: "History" },
+        { value: "24", name: "Politics" },
+        { value: "25", name: "Art" },
+        { value: "26", name: "Celebrities" },
+        { value: "27", name: "Animals" },
+        { value: "28", name: "Vehicles" },
+        { value: "29", name: "Entertainment: Comics" },
+        { value: "30", name: "Science: Gadgets" },
+        { value: "31", name: "Entertainment: Japanese Anime & Manga" },
+        { value: "32", name: "Entertainment: Cartoon & Animations" },
+    ];
+  
+  
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -47,37 +75,7 @@ export default function Form({ onSubmit }) {
                 onChange={handleChange}
                 value={formData.trivia_category}
             >
-                <option value="">Any Category</option>
-                <option value="9">General Knowledge</option>
-                <option value="10">Entertainment: Books</option>
-                <option value="11">Entertainment: Film</option>
-                <option value="12">Entertainment: Music</option>
-                <option value="13">
-                    Entertainment: Musicals &amp; Theatres
-                </option>
-                <option value="14">Entertainment: Television</option>
-                <option value="15">Entertainment: Video Games</option>
-                <option value="16">Entertainment: Board Games</option>
-                <option value="17">Science &amp; Nature</option>
-                <option value="18">Science: Computers</option>
-                <option value="19">Science: Mathematics</option>
-                <option value="20">Mythology</option>
-                <option value="21">Sports</option>
-                <option value="22">Geography</option>
-                <option value="23">History</option>
-                <option value="24">Politics</option>
-                <option value="25">Art</option>
-                <option value="26">Celebrities</option>
-                <option value="27">Animals</option>
-                <option value="28">Vehicles</option>
-                <option value="29">Entertainment: Comics</option>
-                <option value="30">Science: Gadgets</option>
-                <option value="31">
-                    Entertainment: Japanese Anime &amp; Manga
-                </option>
-                <option value="32">
-                    Entertainment: Cartoon &amp; Animations
-                </option>{" "}
+  
             </select>
 
             <br />

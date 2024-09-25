@@ -34,24 +34,24 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
 
-    Route::get('/quiz/index', [QuizControllers::class, 'index']); //returns a list of all quizes
-    Route::get('/quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
-    Route::post('/quiz/create', [QuizControllers::class, 'create']);
-    Route::get('/quiz/new', [QuizControllers::class, 'new']); //Inertia::render('Dashboard')
-    Route::get('/quiz/{id}/edit', [QuizControllers::class, 'edit']); //Inertia::render('Dashboard')
-    Route::put('/quiz/{id]', [QuizControllers::class, 'update']);
-    Route::delete('/quiz/{id}', [QuizControllers::class, 'destroy']);
+    Route::get('/api_quiz', [QuizControllers::class, 'index']); //returns a list of all quizes
+    Route::get('/api_quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
+    Route::post('/api_quiz', [QuizControllers::class, 'create']);
+    Route::put('/api_quiz/{id]', [QuizControllers::class, 'update']);
+    Route::delete('/api_quiz/{id}', [QuizControllers::class, 'destroy']);
 
 });
 
-Route::resource('api_quiz', QuizControllers::class)->only([
-    'index',
-    'show',
-    'create',
-    'edit',
-    'update',
-    'destroy'
-])->middleware('auth:sanctum');
+
+// Sad dream that did not come true
+// Route::apiResource('api_quiz', QuizControllers::class)->only([
+//     'index',
+//     'show',
+//     'store',
+//     'edit',
+//     'update',
+//     'destroy'
+// ])->middleware('auth:sanctum');
 
 
 
