@@ -33,7 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
+    Route::get('/api_quiz/categories', [QuizControllers::class, 'categories']); //returns a list of all categories
     Route::get('/api_quiz', [QuizControllers::class, 'index']); //returns a list of all quizes
     Route::get('/api_quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
     Route::post('/api_quiz', [QuizControllers::class, 'create']);
