@@ -44,4 +44,15 @@ Route::middleware('auth')->group(function () {
 
 });
 
+Route::resource('api_quiz', QuizControllers::class)->only([
+    'index',
+    'show',
+    'create',
+    'edit',
+    'update',
+    'destroy'
+])->middleware('auth:sanctum');
+
+
+
 require __DIR__ . '/auth.php';

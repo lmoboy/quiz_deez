@@ -12,7 +12,8 @@ class QuizControllers
      *
      * @return \Inertia\Response
      */
-    public function index() {
+    public function index()
+    {
         $quizzes = Quiz::all();
         $quizzes->map(function ($quiz) {
             $quiz->incorrect_answers = json_decode($quiz->incorrect_answers);
@@ -27,8 +28,11 @@ class QuizControllers
      * @param  int  $id
      * @return \Inertia\Response
      */
-    public function show($id) {
-        return response()->json(['quiz' => Quiz::findorfail($id) ?? ['peepeepoopoo']]);
+    public function show($id)
+    {
+        $quiz = Quiz::findorfail($id);
+        $quiz->incorrect_answers = json_decode($quiz->incorrect_answers);
+        return response()->json($quiz);
     }
 
     /**
@@ -37,57 +41,42 @@ class QuizControllers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function create(Request $request) {
+    public function create(Request $request)
+    {
         $request->validate([
             'owner_id' => 'required',
-            'qestion' => 'required',
-            'answers' => 'required',
+            'question' => 'required',
+            'incorrect_answers' => 'required',
             'correct_answer' => 'required',
         ]);
 
         $quiz = new Quiz();
         $quiz->owner_id = $request->owner_id;
-        $quiz->qestion = $request->qestion;
+        $quiz->question = $request->question;
         $quiz->answers = $request->answers;
         $quiz->correct_answer = $request->correct_answer;
         $quiz->save();
     }
 
     /**
-     * Show the form for creating a new quiz.
-     *
-     * @return \Inertia\Response
-     */
-    public function new() {
-        return Inertia::render('Quiz/create');
-    }
-    /**
-     * Show the form for editing a quiz.
-     *
-     * @return \Inertia\Response
-     */
-    public function edit() {
-        return Inertia::render('Quiz/edit');
-
-    }
-    /**
      * Update the specified quiz in storage.
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request) {
+    public function update(Request $request)
+    {
         $request->validate([
 
             'id' => 'required',
             'owner_id' => 'required',
-            'qestion' => 'required',
-            'answers' => 'required',
+            'question' => 'required',
+            'incorrect_answers' => 'required',
             'correct_answer' => 'required',
         ]);
 
         $quiz = Quiz::findorfail($request->id);
-        $quiz->qestion = $request->qestion;
+        $quiz->question = $request->question;
         $quiz->answers = $request->answers;
         $quiz->correct_answer = $request->correct_answer;
         $quiz->save();
@@ -100,15 +89,13 @@ class QuizControllers
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request) {
+    public function destroy(Request $request)
+    {
         $request->validate([
             'id' => 'required',
-            'owner_id' => 'required',
         ]);
         $quiz = Quiz::findorfail($request->id);
-        if($quiz->owner_id !== $request->owner_id) {
-            //TODO redirect to error page
-        }
+
         $quiz->delete();
     }
 

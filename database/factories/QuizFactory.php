@@ -20,7 +20,7 @@ class QuizFactory extends Factory
             'owner_id' => random_int(1, 10),
             'question' => fake()->sentence(),
             'completion_count' => 0,
-            'incorrect_answers'=> json_encode([fake()->word(), fake()->word(), fake()->word()]),
+            'incorrect_answers'=> json_encode([fake()->word(), fake()->word(), fake()->word(),fake()->word(), fake()->word(), fake()->word()]),
             'correct_answer' => fake()->word(),
         ];
     }

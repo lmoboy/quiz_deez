@@ -4,16 +4,18 @@ import { useEffect, useState } from "react";
 import QuizCard from "@/Components/QuizCard";
 function PlayArea(...prop) {
     const [quizzes, setQuizzes] = useState([]);
-
+    fetch('/api_quiz/2', {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then((res)=>res.json()).then((data)=>console.log(data))
     useEffect(() => {
         const fetchQuizzes = async () => {
           try {
             const response = await axios.get('/quiz/index');
             setQuizzes(response.data);
-            console.log(response.data[0])
-            // response.data[0].forEach(element => {
-            //     setQuizzes(prevQuizzes => [...prevQuizzes, ...element.question])
-            // });
+
           } catch (error) {
             console.error(error);
           }
@@ -28,9 +30,9 @@ function PlayArea(...prop) {
             <Head title="Play Area" />
             <div>
                 {/* <QuizCard quiz={quizzes}/> */}
-                {quizzes.map((quiz) => (
+                {quizzes.map((quiz, index) => (
                     // <div dangerouslySetInnerHTML={quiz}></div>
-                    <QuizCard key={quiz.id} quiz={quiz} />
+                    <QuizCard key={index} quiz={quiz} />
                 ))}
             </div>
         </>
