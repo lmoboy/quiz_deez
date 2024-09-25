@@ -103,7 +103,7 @@ class QuizControllers
         $quiz->delete();
     }
 
-    public function categories(Request $request)
+    public function categories()
     {
         return response()->json(
             [
