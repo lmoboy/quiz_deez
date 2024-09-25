@@ -111,7 +111,7 @@ export default function Quiz() {
     return (
         <AuthenticatedLayout
             header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
+                <h2 className="font-semibold text-xl text-white leading-tight">
                     Quiz
                 </h2>
             }
