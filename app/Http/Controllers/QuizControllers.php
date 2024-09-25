@@ -55,7 +55,7 @@ class QuizControllers
         $quiz->owner_id = $request->owner_id;
         $quiz->category = $request->category;
         $quiz->question = $request->question;
-        $quiz->answers = $request->answers;
+        $quiz->incorrect_answers = $request->incorrect_answers;
         $quiz->correct_answer = $request->correct_answer;
         $quiz->save();
     }
