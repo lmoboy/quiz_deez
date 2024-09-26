@@ -1,6 +1,6 @@
 import { router } from "@inertiajs/react";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 /**
  * Generates a form for the user to input the parameters for the API request.
@@ -11,18 +11,23 @@ import { useState } from "react";
  * @returns {JSX.Element}
  */
 export default function Form({ onSubmit }) {
+    const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({
         trivia_amount: 10,
         trivia_category: "",
         trivia_difficulty: "",
         trivia_type: "",
     });
-    const categories = router.get('/api_quiz/categories')
-    
-
-    // .map((category) => { 
-    //     return(<option key={category.id} value={category.id}>{category.name}</option>)})
-  
+    useEffect(() => {
+        fetch("/api_quiz/categories")
+            .then((res) => res.json())
+            .then((data) => {
+                setCategories(data);
+            });
+    }, []);
+    categories.map((category) => {
+        console.log(category);
+    });
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -55,9 +60,17 @@ export default function Form({ onSubmit }) {
                 onChange={handleChange}
                 value={formData.trivia_category}
             >
-                {categories.map((category) => {
-                       <option key={category.id} value={category.id}>{category.name}</option>
-                })}
+                {categories ? (
+                    categories.map((category) => {
+                        return(
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        )
+                    })
+                ) : (
+                    null
+                )}
             </select>
 
             <br />
