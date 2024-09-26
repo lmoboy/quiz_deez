@@ -1,18 +1,28 @@
-import { Link } from '@inertiajs/react';
+import { Link } from "@inertiajs/react";
 
-export default function NavLink({ active = false, className = '', children, ...props }) {
+export default function NavLink({
+    active = false,
+    className = "",
+    children,
+    ...props
+}) {
     return (
         <Link
             {...props}
             className={
-                'inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium leading-5 transition duration-150 ease-in-out focus:outline-none ' +
+                "relative inline-flex items-center px-3 py-2 border-b-2 text-sm font-medium leading-5 transition duration-300 ease-in-out transform hover:scale-105 focus:outline-none no-underline " +
                 (active
-                    ? 'border-indigo-400 text-gray-900 focus:border-indigo-700 '
-                    : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:text-gray-700 focus:border-gray-300 ') +
+                    ? "border-indigo-500 text-white bg-gradient-to-r from-indigo-500 to-purple-600 shadow-lg hover:shadow-2xl focus:ring-4 focus:ring-indigo-300 "
+                    : "border-transparent text-gray-300 hover:text-indigo-400 hover:border-indigo-400 hover:bg-gray-800 focus:bg-gray-700 focus:text-indigo-300 ") +
                 className
             }
         >
             {children}
+            <span
+                className={`absolute bottom-0 left-0 h-1 bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500 ease-in-out ${
+                    active ? "w-full" : "w-0 group-hover:w-full"
+                }`}
+            />
         </Link>
     );
 }
