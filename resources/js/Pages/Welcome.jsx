@@ -25,42 +25,49 @@ export default function Welcome({ auth, laravelVersion, phpVersion }) {
                 {/* Main Content */}
                 <div className="relative z-10 flex flex-col justify-center items-center min-h-screen bg-gray-50 bg-opacity-50 dark:bg-black dark:bg-opacity-50">
                     <div className="text-center">
-                        {/* Welcome Message */}
-                        <h1 className="text-5xl font-bold text-black dark:text-indigo-300 mb-6">
-    Welcome to <span className="underline underline-offset-2 decoration-indigo-400">DeezQUIZ</span>
-</h1>
+                        {/* Colorful Box */}
+                        <div className="border-4 border-indigo-500 p-8 rounded-lg shadow-lg bg-white bg-opacity-80 dark:bg-gray-800 dark:bg-opacity-80">
+                            {/* Welcome Message */}
+                            <h1 className="text-5xl font-bold text-black dark:text-indigo-300 mb-6">
+                                Welcome to{" "}
+                                <span className="underline underline-offset-2 decoration-indigo-400">
+                                    DeezQUIZ
+                                </span>
+                            </h1>
 
-                        <p className="text-2xl font-bold text-black dark:text-indigo-200 mb-6">Test your knowledge in deez many categories!</p>
+                            <p className="text-2xl font-bold text-black dark:text-indigo-200 mb-6">
+                                Test your knowledge in deez many categories!
+                            </p>
 
-
-                        {/* Action Buttons */}
-                        <div className="flex justify-center space-x-4">
-                            {auth.user ? (
-                                // If the user is authenticated, show a link to the dashboard
-                                <Link
-                                    href={route('dashboard')}
-                                    className="px-6 py-3 text-white rounded-md shadow hover:shadow-lg transition bg-gradient-to-r from-indigo-600 to-indigo-800"
-                                >
-                                    Go to Dashboard
-                                </Link>
-                            ) : (
-                                <>
-                                    {/* Links for guests */}
+                            {/* Action Buttons */}
+                            <div className="flex justify-center space-x-4">
+                                {auth.user ? (
+                                    // If the user is authenticated, show a link to the dashboard
                                     <Link
-                                        href={route('login')}
+                                        href={route("dashboard")}
                                         className="px-6 py-3 text-white rounded-md shadow hover:shadow-lg transition bg-gradient-to-r from-indigo-600 to-indigo-800"
                                     >
-                                        Login
+                                        Go to Dashboard
                                     </Link>
+                                ) : (
+                                    <>
+                                        {/* Links for guests */}
+                                        <Link
+                                            href={route("login")}
+                                            className="px-6 py-3 text-white rounded-md shadow hover:shadow-lg transition bg-gradient-to-r from-indigo-600 to-indigo-800"
+                                        >
+                                            Login
+                                        </Link>
 
-                                    <Link
-                                        href={route('register')}
-                                        className="px-6 py-3 text-white rounded-md shadow hover:shadow-lg transition bg-gradient-to-r from-indigo-600 to-indigo-800"
-                                    >
-                                        Register
-                                    </Link>
-                                </>
-                            )}
+                                        <Link
+                                            href={route("register")}
+                                            className="px-6 py-3 text-white rounded-md shadow hover:shadow-lg transition bg-gradient-to-r from-indigo-600 to-indigo-800"
+                                        >
+                                            Register
+                                        </Link>
+                                    </>
+                                )}
+                            </div>
                         </div>
                     </div>
                 </div>
