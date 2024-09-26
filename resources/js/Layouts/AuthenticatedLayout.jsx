@@ -19,7 +19,7 @@ export default function Authenticated({ header, children }) {
                         className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
                         <ApplicationLogo className="h-8 w-auto fill-current text-white" />
-                        <span className="self-center text-2xl font-semibold tracking-wider">
+                        <span className="self-center text-2xl font-semibold tracking-wider text-white">
                             QZAR
                         </span>
                     </Link>
