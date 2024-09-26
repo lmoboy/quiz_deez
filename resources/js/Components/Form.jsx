@@ -1,3 +1,5 @@
+import { router } from "@inertiajs/react";
+import axios from "axios";
 import { useState } from "react";
 
 /**
@@ -15,7 +17,11 @@ export default function Form({ onSubmit }) {
         trivia_difficulty: "",
         trivia_type: "",
     });
-  
+    const categories = router.get('/api_quiz/categories')
+    
+
+    // .map((category) => { 
+    //     return(<option key={category.id} value={category.id}>{category.name}</option>)})
   
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -49,7 +55,9 @@ export default function Form({ onSubmit }) {
                 onChange={handleChange}
                 value={formData.trivia_category}
             >
-  
+                {categories.map((category) => {
+                       <option key={category.id} value={category.id}>{category.name}</option>
+                })}
             </select>
 
             <br />
