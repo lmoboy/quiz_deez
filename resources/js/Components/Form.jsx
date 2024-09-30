@@ -65,7 +65,7 @@ export default function Form({ onSubmit }) {
                 {categories ? (
                     categories.map((category) => {
                         return(
-                            <option key={category.id} value={category.id}>
+                            <option key={category.id} value={category.value}>
                                 {category.name}
                             </option>
                         )
