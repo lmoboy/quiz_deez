@@ -1,25 +1,17 @@
-"use client";
-
 import Form from "@/Components/Form";
-// import Results from "@/Components/Results";
 import QuizCard from "@/Components/QuizCard";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Head } from "@inertiajs/react";
 import { useState } from "react";
 import anime from "animejs";
 import Results from "@/Components/Results";
+
 /**
  * The Quiz component serves as the main container for the quiz application. It handles the
  * initiation of the quiz by displaying a form for user input, fetching quiz questions based on
  * the user's selections, and displaying either the questions or a loading state. The component
  * manages its own state for tracking the questions, loading status, and the dynamic rendering
  * of either the form for initiating the quiz or the quiz content itself.
- *
- * It leverages the `Form` component to collect user inputs for the quiz parameters (number of
- * questions, category, difficulty, and type) and the `QuizCard` component to display individual
- * quiz questions. The quiz data is fetched from the Open Trivia Database API based on the user's
- * selections. The component also handles potential errors during the fetching process, including
- * rate limiting by the API.
  */
 export default function Quiz() {
     const [questions, setQuestions] = useState([]);
@@ -38,13 +30,7 @@ export default function Quiz() {
 
     /**
      * Submits the form to the trivia API and fetches questions based on
-     * the form data. If the response is successful, it sets the questions
-     * state to the response data. If the response is a 429 (too many
-     * requests), it throws a "Rate limited" error. Otherwise, it throws
-     * an error with the response status text.
-     *
-     * @param {Object} formData - Form data containing the number of
-     * questions to fetch, the category, the difficulty and the type
+     * the form data.
      */
     const handleFormSubmit = (formData) => {
         setLoading(true);
@@ -63,7 +49,6 @@ export default function Quiz() {
                     return response.json();
                 } else if (response.status === 429) {
                     setLoading(false);
-
                     throw new Error("Rate limited");
                 } else {
                     throw new Error(
@@ -77,6 +62,9 @@ export default function Quiz() {
             })
             .catch((error) => console.log(error));
     };
+
+    // Calculate the percentage of quiz completion
+    const progress = Math.round(((current + 1) / questions.length) * 100);
 
     let content;
     if (loading && !finished) {
@@ -120,8 +108,28 @@ export default function Quiz() {
             <div className="flex items-center justify-center w-full h-screen">
                 <div
                     id="quiz_container"
-                    className="bg-white h-full w-full justify-center items-center flex "
+                    className="bg-white h-full w-full justify-center items-center flex flex-col"
                 >
+                    {/* Progress Bar */}
+                    {questions.length > 0 && !finished && (
+                        <div className="w-full bg-gray-300 h-4 my-4 rounded-full">
+                            <div
+                                style={{ width: `${progress}%` }}
+                                className="bg-blue-500 h-full rounded-full transition-all duration-300 ease-in-out"
+                            ></div>
+                        </div>
+                    )}
+
+                    {/* Current Question */}
+                    <div className="w-full text-center text-gray-700 mb-4">
+                        {questions.length > 0 && !finished && (
+                            <p>
+                                Question {current + 1} of {questions.length}
+                            </p>
+                        )}
+                    </div>
+
+                    {/* Quiz Content */}
                     {content}
                 </div>
             </div>
