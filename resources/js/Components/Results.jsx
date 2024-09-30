@@ -1,62 +1,65 @@
-/**
- * @function
- * @param {Object} props The props for the Results component
- * @param {number} props.correct The number of correct answers
- * @param {Object[]} props.questions The questions that were asked
- * @returns {JSX.Element} The Results component
- * @example
- * <Results
- *   correct={5}
- *   questions={[
- *     { question: 'What is the capital of France?', correct: true },
- *     { question: 'What is the capital of China?', correct: false },
- *     { question: 'What is the capital of USA?', correct: true },
- *     { question: 'What is the capital of Japan?', correct: false },
- *     { question: 'What is the capital of Brazil?', correct: true },
- *   ]}
- * />
- */
 import { decode } from "html-entities";
+
 export default function Results({ questions, correct }) {
-    const correctAnswers = questions.filter(
+    // Подсчет количества правильных ответов
+    const correctAnswersCount = questions.filter(
         (question, index) => question.correct_answer === correct[index]
-    );
+    ).length;
 
     return (
-        <div className="text-center border-2 p-2 rounded-xl border-black">
-            <h2 className="text-3xl font-bold">
-                You scored {correctAnswers.length} out of {questions.length}
-            </h2>
+        <div className="flex justify-center items-center min-h-screen">
+            {/* Основной контейнер */}
+            <div className="w-full max-w-3xl p-5 border-2 rounded-xl border-black bg-white shadow-lg">
+                {/* Показать количество правильных ответов */}
+                <h2 className="text-3xl font-bold text-center">
+                    You scored {correctAnswersCount} of {questions.length}
+                </h2>
 
-            <ul>
-                {questions.map((question, index) => (
-                    <li
-                        key={index}
-                        className={`${
-                            correct[index] === question.correct_answer
-                                ? "text-green-500"
-                                : "text-red-500"
-                        }`}
+                {/* Прокручиваемый контейнер с ограниченной высотой */}
+                <div className="mt-4 max-h-96 overflow-y-auto space-y-4">
+                    <ul>
+                        {questions.map((question, index) => (
+                            <li key={index} className="text-left">
+                                {/* Вопрос */}
+                                <p className="font-bold mb-2 text-lg">
+                                    {decode(question.question)}
+                                </p>
+
+                                {/* Ответ пользователя, окрашенный в зависимости от правильности */}
+                                <p
+                                    className={`p-2 rounded-lg ${
+                                        question.correct_answer === correct[index]
+                                            ? "bg-green-100 text-green-600"
+                                            : "bg-red-100 text-red-600"
+                                    }`}
+                                >
+                                    Your answer: {decode(correct[index])}
+                                </p>
+
+                                {/* Отображение правильного ответа, если ответ был неверным */}
+                                {question.correct_answer !== correct[index] && (
+                                    <p className="p-2 mt-1 rounded-lg bg-blue-100 text-blue-600">
+                                        Correct answer: {decode(question.correct_answer)}
+                                    </p>
+                                )}
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+
+                {/* Кнопки действий */}
+                <div className="mt-6 space-x-4 text-center">
+                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Submit score
+                    </button>
+                    <button
+                        className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
+                        onClick={() => window.location.reload()}
                     >
-                        {decode(question.question)}
-                    </li>
-                ))}
-            </ul>
-
-            <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                Submit score
-            </button>
-            <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-                onClick={() => window.location.reload()}
-            >
-                Play Again
-            </button>
+                        Play Again
+                    </button>
+                </div>
+            </div>
         </div>
     );
 }
-
-Results.propTypes = {
-    questions: [],
-    correct: [],
-};

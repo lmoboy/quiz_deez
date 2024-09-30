@@ -15,8 +15,7 @@ export default function Form({ onSubmit }) {
         trivia_difficulty: "",
         trivia_type: "",
     });
-  
-  
+
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     };
@@ -27,65 +26,73 @@ export default function Form({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="border-2">
-            <label htmlFor="trivia_amount">Number of Questions:</label>
-            <input
-                type="number"
-                name="trivia_amount"
-                id="trivia_amount"
-                className="form-control"
-                min="1"
-                max="50"
-                onChange={handleChange}
-                value={formData.trivia_amount}
-            />
+        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-gray-800">Configure Your Quiz</h2>
+            
+            <div className="mb-4">
+                <label htmlFor="trivia_amount" className="block text-gray-700 font-semibold mb-2">Number of Questions:</label>
+                <input
+                    type="number"
+                    name="trivia_amount"
+                    id="trivia_amount"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    min="1"
+                    max="50"
+                    onChange={handleChange}
+                    value={formData.trivia_amount}
+                />
+            </div>
 
-            <br />
+            <div className="mb-4">
+                <label htmlFor="trivia_category" className="block text-gray-700 font-semibold mb-2">Select Category:</label>
+                <select
+                    name="trivia_category"
+                    id="trivia_category"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={handleChange}
+                    value={formData.trivia_category}
+                >
+                    <option value="">Any Category</option>
+                    <option value="9">General Knowledge</option>
+                    <option value="21">Sports</option>
+                    <option value="23">History</option>
+                    <option value="17">Science & Nature</option>
+                </select>
+            </div>
 
-            <label htmlFor="trivia_category">Select Category: </label>
-            <select
-                name="trivia_category"
-                id="trivia_category"
-                onChange={handleChange}
-                value={formData.trivia_category}
-            >
-  
-            </select>
+            <div className="mb-4">
+                <label htmlFor="trivia_difficulty" className="block text-gray-700 font-semibold mb-2">Select Difficulty:</label>
+                <select
+                    name="trivia_difficulty"
+                    id="trivia_difficulty"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={handleChange}
+                    value={formData.trivia_difficulty}
+                >
+                    <option value="">Any Difficulty</option>
+                    <option value="easy">Easy</option>
+                    <option value="medium">Medium</option>
+                    <option value="hard">Hard</option>
+                </select>
+            </div>
 
-            <br />
+            <div className="mb-4">
+                <label htmlFor="trivia_type" className="block text-gray-700 font-semibold mb-2">Select Type:</label>
+                <select
+                    name="trivia_type"
+                    id="trivia_type"
+                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    onChange={handleChange}
+                    value={formData.trivia_type}
+                >
+                    <option value="">Any Type</option>
+                    <option value="multiple">Multiple Choice</option>
+                    <option value="boolean">True / False</option>
+                </select>
+            </div>
 
-            <label htmlFor="trivia_difficulty">Select Difficulty: </label>
-            <select
-                name="trivia_difficulty"
-                id="trivia_difficulty"
-                onChange={handleChange}
-                value={formData.trivia_difficulty}
-            >
-                <option value="">Any Difficulty</option>
-                <option value="easy">Easy</option>
-                <option value="medium">Medium</option>
-                <option value="hard">Hard</option>
-            </select>
-
-            <br />
-
-            <label htmlFor="trivia_type">Select Type: </label>
-            <select
-                name="trivia_type"
-                id="trivia_type"
-                onChange={handleChange}
-                value={formData.trivia_type}
-            >
-                &gt;
-                <option value="">Any Type</option>
-                <option value="multiple">Multiple Choice</option>
-                <option value="boolean">True / False</option>
-            </select>
-
-            <br />
-
-            <button className="btn btn-lg btn-primary btn-block" type="submit">
-                Generate quiz
+            <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" type="submit">
+                Generate Quiz
             </button>
         </form>
     );
