@@ -110,17 +110,6 @@ export default function Quiz() {
                     id="quiz_container"
                     className="bg-white h-full w-full justify-center items-center flex flex-col"
                 >
-                    {/* Progress Bar */}
-                    {questions.length > 0 && !finished && (
-                        <div className="w-full bg-gray-300 h-4 my-4 rounded-full">
-                            <div
-                                style={{ width: `${progress}%` }}
-                                className="bg-blue-500 h-full rounded-full transition-all duration-300 ease-in-out"
-                            ></div>
-                        </div>
-                    )}
-
-                    {/* Current Question */}
                     <div className="w-full text-center text-gray-700 mb-4">
                         {questions.length > 0 && !finished && (
                             <p>
@@ -133,6 +122,14 @@ export default function Quiz() {
                     {content}
                 </div>
             </div>
+            {questions.length > 0 && !finished && (
+                <div className="bg-gray-300 h-4 my-4 ">
+                    <div
+                        style={{ width: `${progress}%` }}
+                        className="bg-blue-500 h-full transition-all duration-300 ease-in-out"
+                    ></div>
+                </div>
+            )}
         </AuthenticatedLayout>
     );
 }
