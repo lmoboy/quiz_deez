@@ -49,9 +49,7 @@ export default function Results({ questions, correct }) {
 
                 {/* Кнопки действий */}
                 <div className="mt-6 space-x-4 text-center">
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
-                        Submit score
-                    </button>
+
                     <button
                         className="bg-gray-500 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded"
                         onClick={() => window.location.reload()}
