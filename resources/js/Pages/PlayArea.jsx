@@ -50,23 +50,23 @@ function PlayArea(...prop) {
             <NavLink href="/dashboard">DashBoard</NavLink>
             <form
                 onSubmit={async (e) => {
-                    // const question = e.target.question.value;
-                    // const correct_answer = e.target.correct_answer.value;
-                    // const incorrect_answers = e.target.incorrect_answers.value
-                    //     .split(",")
-                    //     .filter(Boolean);
+                    const question = e.target.question.value;
+                    const correct_answer = e.target.correct_answer.value;
+                    const incorrect_answers = e.target.incorrect_answers.value
+                        .split(",")
+                        .filter(Boolean);
 
-                    // e.preventDefault();
-                    // router.post(
-                    //     "/api_quiz",
-                    //     {
-                    //         question,
-                    //         correct_answer,
-                    //         incorrect_answers,
-                    //         category: 'general',
-                    //         owner_id: 1
-                    //     }
-                    // );
+                    e.preventDefault();
+                    router.post(
+                        "/api_quiz",
+                        {
+                            question,
+                            correct_answer,
+                            incorrect_answers,
+                            category: 'general',
+                            owner_id: 1
+                        }
+                    );
                     // const question = e.target.question.value;
                     // const correct_answer = e.target.correct_answer.value;
                     // const incorrect_answers = e.target.incorrect_answers.value.split(',').filter(Boolean);

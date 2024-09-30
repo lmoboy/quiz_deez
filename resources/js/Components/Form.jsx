@@ -1,4 +1,6 @@
-import { useState } from "react";
+import { router } from "@inertiajs/react";
+import axios from "axios";
+import { useEffect, useState } from "react";
 
 /**
  * Generates a form for the user to input the parameters for the API request.
@@ -9,12 +11,20 @@ import { useState } from "react";
  * @returns {JSX.Element}
  */
 export default function Form({ onSubmit }) {
+    const [categories, setCategories] = useState([]);
     const [formData, setFormData] = useState({
         trivia_amount: 10,
         trivia_category: "",
         trivia_difficulty: "",
         trivia_type: "",
     });
+    useEffect(() => {
+        fetch("/api_quiz/categories")
+            .then((res) => res.json())
+            .then((data) => {
+                setCategories(data);
+            });
+    }, []);
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -52,28 +62,18 @@ export default function Form({ onSubmit }) {
                     onChange={handleChange}
                     value={formData.trivia_category}
                 >
-                    <option value="">Any Category</option>
-                    <option value="9">General Knowledge</option>
-                    <option value="21">Sports</option>
-                    <option value="23">History</option>
-                    <option value="17">Science & Nature</option>
-                </select>
-            </div>
-
-            <div className="mb-4">
-                <label htmlFor="trivia_difficulty" className="block text-gray-700 font-semibold mb-2">Select Difficulty:</label>
-                <select
-                    name="trivia_difficulty"
-                    id="trivia_difficulty"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    onChange={handleChange}
-                    value={formData.trivia_difficulty}
-                >
-                    <option value="">Any Difficulty</option>
-                    <option value="easy">Easy</option>
-                    <option value="medium">Medium</option>
-                    <option value="hard">Hard</option>
-                </select>
+                {categories ? (
+                    categories.map((category) => {
+                        return(
+                            <option key={category.id} value={category.id}>
+                                {category.name}
+                            </option>
+                        )
+                    })
+                ) : (
+                    null
+                )}
+            </select>
             </div>
 
             <div className="mb-4">
