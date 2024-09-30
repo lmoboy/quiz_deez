@@ -47,7 +47,7 @@ export default function QuizCard({ quiz, onAnswer, className }) {
                     <button
                         key={answer}
                         onClick={() => handleClick(answer)}
-                        className="cursor-pointer border-2 border-black rounded-lg p-2 mt-2"
+                        className="cursor-pointer hover:scale-105 duration-75 border-2 border-black rounded-lg p-2 mt-2"
                     >
                         {decode(answer)}
                     </button>
