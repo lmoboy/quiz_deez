@@ -1,5 +1,3 @@
-import { router } from "@inertiajs/react";
-import axios from "axios";
 import { useEffect, useState } from "react";
 
 /**
@@ -36,11 +34,11 @@ export default function Form({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-white p-6 rounded-lg shadow-lg">
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">Configure Your Quiz</h2>
+        <form onSubmit={handleSubmit} className="bg-gradient-to-l from-blue-900 to-indigo-800 p-6 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-slate-300">Configure Your Quiz</h2>
             
             <div className="mb-4">
-                <label htmlFor="trivia_amount" className="block text-gray-700 font-semibold mb-2">Number of Questions:</label>
+                <label htmlFor="trivia_amount" className="block text-slate-300 font-semibold mb-2">Number of Questions:</label>
                 <input
                     type="number"
                     name="trivia_amount"
@@ -54,7 +52,7 @@ export default function Form({ onSubmit }) {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="trivia_category" className="block text-gray-700 font-semibold mb-2">Select Category:</label>
+                <label htmlFor="trivia_category" className="block text-slate-300 font-semibold mb-2">Select Category:</label>
                 <select
                     name="trivia_category"
                     id="trivia_category"
@@ -77,7 +75,7 @@ export default function Form({ onSubmit }) {
             </div>
 
             <div className="mb-4">
-                <label htmlFor="trivia_type" className="block text-gray-700 font-semibold mb-2">Select Type:</label>
+                <label htmlFor="trivia_type" className="block text-slate-300 font-semibold mb-2">Select Type:</label>
                 <select
                     name="trivia_type"
                     id="trivia_type"

@@ -28,10 +28,16 @@ export default function Quiz() {
         }
     };
 
-    /**
-     * Submits the form to the trivia API and fetches questions based on
-     * the form data.
-     */
+    
+    const reset = () => {
+        setQuestions([]);
+        setLoading(false);
+        setCurrent(0);
+        setCorrect([]);
+        setFinished(false);
+    };
+
+
     const handleFormSubmit = (formData) => {
         setLoading(true);
         fetch(
@@ -63,8 +69,7 @@ export default function Quiz() {
             .catch((error) => console.log(error));
     };
 
-    // Calculate the percentage of quiz completion
-    const progress = Math.round(((current + 1) / questions.length) * 100);
+    const progress = Math.round(((current) / questions.length) * 100);
 
     let content;
     if (loading && !finished) {
@@ -85,13 +90,13 @@ export default function Quiz() {
                     key={key}
                     onAnswer={handleAnswer}
                     className={
-                        (direction ? " visible " : " hidden ") + " quiz "
+                        (direction ? " visible " : " hidden ") + " quiz"
                     }
                 />
             );
         });
     } else if (!loading && finished) {
-        content = <Results correct={correct} questions={questions}></Results>;
+        content = <Results correct={correct} questions={questions} playAgain={reset}></Results>;
     } else {
         content = <Form onSubmit={handleFormSubmit} />;
     }
@@ -105,25 +110,23 @@ export default function Quiz() {
             }
         >
             <Head title="Quiz" />
-            <div className="flex items-center justify-center w-full h-screen">
+            <div className="flex items-center justify-center  w-full h-screen">
                 <div
                     id="quiz_container"
-                    className="bg-white h-full w-full justify-center items-center flex flex-col"
+                    className="bg-gradient-to-r from-blue-900 to-indigo-800 h-full w-full justify-center items-center flex flex-col"
                 >
-                    <div className="w-full text-center text-gray-700 mb-4">
+                    <div className="w-full text-center text-slate-300 mb-4">
                         {questions.length > 0 && !finished && (
                             <p>
-                                Question {current + 1} of {questions.length}
+                                Question {current } of {questions.length}
                             </p>
                         )}
                     </div>
-
-                    {/* Quiz Content */}
                     {content}
                 </div>
             </div>
             {questions.length > 0 && !finished && (
-                <div className="bg-gray-300 h-4 my-4 ">
+                <div className="bg-gray-300 sticky bottom-0 h-4">
                     <div
                         style={{ width: `${progress}%` }}
                         className="bg-blue-500 h-full transition-all duration-300 ease-in-out"

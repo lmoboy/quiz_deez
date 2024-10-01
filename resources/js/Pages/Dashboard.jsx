@@ -11,11 +11,41 @@ export default function Dashboard() {
             }
         >
             <Head title="Dashboard" />
-            <div className="py-12">
-                <div className="max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div className="p-6 text-gray-900">
-                           Welcome to QZAR
+            <div className="py-12 bg-gradient-to-r from-blue-900 h-screen to-indigo-800">
+                <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
+                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-slate-300">
+                            <h2 className="text-3xl font-bold mb-4">
+                                Welcome to QZAR!
+                            </h2>
+                            <p className="mb-6">
+                                QZAR is the perfect place to compete with others
+                                in quiz guessing!
+                            </p>
+                        </div>
+                    </div>
+                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
+                        <div className="p-6 text-slate-300">
+                            <h2 className="text-3xl font-bold mb-4">
+                                Explore the Quizzes!
+                            </h2>
+                            <p className="mb-6">
+                                We have the largest collection of quizzes out
+                                there, and we're always adding more.
+                            </p>
+                        </div>
+                    </div>
+                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg col-span-2">
+                        <div className="p-6 text-slate-300">
+                            <h2 className="text-3xl font-bold mb-4">
+                                Where to start?
+                            </h2>
+                            <p className="mb-6">
+                                To get started, simply press the "Quiz" button
+                                at the top of the page in the navigation bar.
+                                You'll be taken to a page where you can select
+                                from a variety of quizzes.
+                            </p>
                         </div>
                     </div>
                 </div>

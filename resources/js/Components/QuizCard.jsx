@@ -24,7 +24,6 @@ export default function QuizCard({ quiz, onAnswer, className }) {
      */
     const handleClick = (answer) => {
         const isCorrect = answer;
-        console.log(isCorrect)
         anime({
             targets: quizCardRef.current,
             translateX: [0, -100], // slide out to the right
@@ -39,10 +38,10 @@ export default function QuizCard({ quiz, onAnswer, className }) {
 
     return (
         <div ref={quizCardRef} className={className}>
-            <h2 className="text-2xl font-semibold">
+            <h2 className="text-2xl text-slate-300 font-semibold">
                 {decode(template.question)}
             </h2>
-            <ul className="flex flex-col w-full pl-4 mt-2">
+            <ul className="flex text-slate-300 flex-col w-full pl-4 mt-2">
                 {template.answers.map((answer) => (
                     <button
                         key={answer}
@@ -57,8 +56,3 @@ export default function QuizCard({ quiz, onAnswer, className }) {
     );
 }
 
-QuizCard.propTypes = {
-    quiz: {},
-    onAnswer: '',
-    className: "",
-};

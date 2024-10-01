@@ -36,9 +36,9 @@ Route::middleware('auth')->group(function () {
     Route::get('/api_quiz/categories', [QuizControllers::class, 'categories']); //returns a list of all categories
     Route::get('/api_quiz', [QuizControllers::class, 'index']); //returns a list of all quizes
     Route::get('/api_quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
-    Route::post('/api_quiz', [QuizControllers::class, 'create']);
-    Route::put('/api_quiz/{id]', [QuizControllers::class, 'update']);
+    Route::put('/api_quiz/{id}', [QuizControllers::class, 'store']);
     Route::delete('/api_quiz/{id}', [QuizControllers::class, 'destroy']);
+    Route::post('/api_quiz', [QuizControllers::class, 'create']);
 
 });
 

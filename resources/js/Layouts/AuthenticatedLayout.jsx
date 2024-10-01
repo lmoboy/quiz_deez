@@ -18,9 +18,9 @@ export default function Authenticated({ header, children }) {
                         href="/"
                         className="flex items-center space-x-3 rtl:space-x-reverse"
                     >
-                        <ApplicationLogo className="h-8 w-auto fill-current text-white" />
+                        <ApplicationLogo className="h-16 w-auto" />
                         <span className="self-center text-2xl font-semibold tracking-wider text-white">
-                            QZAR
+                            DeezQuiz
                         </span>
                     </Link>
                     <div className="flex items-center space-x-4">
