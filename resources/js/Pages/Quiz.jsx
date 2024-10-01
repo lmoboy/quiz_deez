@@ -122,6 +122,10 @@ export default function Quiz() {
                             </p>
                         )}
                     </div>
+<<<<<<< HEAD
+=======
+                    {/* Quiz Content */}
+>>>>>>> bb578dec66583fee7afa51f8759c78330f43d11f
                     {content}
                 </div>
             </div>
