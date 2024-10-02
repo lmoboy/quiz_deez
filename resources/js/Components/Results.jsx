@@ -28,7 +28,7 @@ export default function Results({ questions, correct, playAgain }) {
 
     return (
         <div className="flex justify-center items-center ">
-            <div className="w-full max-w-3xl p-5  rounded-xl  bg-gradient-to-l from-blue-900 to-indigo-800 shadow-lg">
+            <div className="w-full max-w-3xl p-5  rounded-xl  bg-gradient-to-tr from-indigo-500 to-blue-600 shadow-lg">
                 <h2 className="text-3xl text-slate-300 font-bold text-center">
                     You scored {correctAnswersCount} of {questions.length}
                 </h2>

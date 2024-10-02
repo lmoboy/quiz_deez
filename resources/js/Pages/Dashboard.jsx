@@ -13,7 +13,7 @@ export default function Dashboard() {
             <Head title="Dashboard" />
             <div className="py-12 bg-gradient-to-r from-blue-900 to-indigo-800 h-screen">
                 <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
-                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-gradient-to-tr from-indigo-500 to-blue-600 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-slate-300">
                             <h2 className="text-3xl font-bold mb-4">
                                 Welcome to DeezQuiz!
@@ -24,7 +24,7 @@ export default function Dashboard() {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
+                    <div className="bg-gradient-to-tr from-indigo-500 to-blue-600 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-slate-300">
                             <h2 className="text-3xl font-bold mb-4">
                                 Explore Dee Quizzes!
@@ -35,7 +35,7 @@ export default function Dashboard() {
                             </p>
                         </div>
                     </div>
-                    <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg col-span-2">
+                    <div className="bg-gradient-to-tr from-indigo-500 to-blue-600 overflow-hidden shadow-sm sm:rounded-lg col-span-2">
                         <div className="p-6 text-slate-300">
                             <h2 className="text-3xl font-bold mb-4">
                                 Where to start?

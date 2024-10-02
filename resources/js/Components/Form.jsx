@@ -34,7 +34,7 @@ export default function Form({ onSubmit }) {
     };
 
     return (
-        <form onSubmit={handleSubmit} className="bg-gradient-to-l from-blue-900 to-indigo-800 p-6 rounded-lg shadow-lg">
+        <form onSubmit={handleSubmit} className="bg-gradient-to-tr from-indigo-500 to-blue-600 p-6 rounded-lg shadow-lg">
             <h2 className="text-2xl font-bold mb-4 text-slate-300">Configure Your Quiz</h2>
             
             <div className="mb-4">

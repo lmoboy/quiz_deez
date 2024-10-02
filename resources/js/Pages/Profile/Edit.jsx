@@ -15,21 +15,21 @@ export default function Edit({ mustVerifyEmail, status }) {
         >
             <Head title="Profile" />
 
-            <div className="py-12">
+            <div className="py-12 bg-gradient-to-l from-blue-900 to-indigo-800">
                 <div className="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div className="p-4  sm:p-8 bg-gradient-to-tr from-indigo-500 to-blue-600 shadow sm:rounded-lg">
                         <UpdateProfileInformationForm
                             mustVerifyEmail={mustVerifyEmail}
                             status={status}
-                            className="max-w-xl"
+                            className="max-w-xl "
                         />
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
-                        <UpdatePasswordForm className="max-w-xl" />
+                    <div className="p-4 sm:p-8 bg-gradient-to-tr from-indigo-500 to-blue-600 shadow sm:rounded-lg">
+                        <UpdatePasswordForm className="max-w-xl " />
                     </div>
 
-                    <div className="p-4 sm:p-8 bg-white shadow sm:rounded-lg">
+                    <div className="p-4 sm:p-8 bg-gradient-to-tr from-indigo-500 to-blue-600 shadow sm:rounded-lg">
                         <DeleteUserForm className="max-w-xl" />
                     </div>
                 </div>

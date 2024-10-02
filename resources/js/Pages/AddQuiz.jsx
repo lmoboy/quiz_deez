@@ -13,7 +13,7 @@ export function AddQuiz() {
             <Head title="Add quiz" />
             <div className="flex items-center justify-center  w-full h-screen">
                 <div className="bg-gradient-to-r  from-blue-900 to-indigo-800 h-full w-full justify-center items-center flex flex-col">
-                    <div className="flex flex-col bg-gradient-to-l  from-blue-900 to-indigo-800 p-2 rounded-md shadow-md">
+                    <div className="flex flex-col bg-gradient-to-tr from-indigo-500 to-blue-600 p-2 rounded-md shadow-md">
                         <span>
                             <form
                                 onSubmit={async (e) => {
