@@ -149,12 +149,28 @@ export default function Authenticated({ header, children }) {
                         >
                             Quiz
                         </ResponsiveNavLink>
-                        <ResponsiveNavLink
-                            href={route("test")}
-                            active={route().current("test")}
-                        >
-                            Play Area
-                        </ResponsiveNavLink>
+                        {user.is_admin ? (
+                                <>
+                                    {/* <NavLink
+                                        href={route("test")}
+                                        active={route().current("test")}
+                                    >
+                                        Play Area
+                                    </NavLink> */}
+                                    <ResponsiveNavLink
+                                        href={route("addquiz")}
+                                        active={route().current("addquiz")}
+                                    >
+                                        Add Quiz
+                                    </ResponsiveNavLink>
+                                    <ResponsiveNavLink
+                                        href={route("updatequiz")}
+                                        active={route().current("updatequiz")}
+                                    >
+                                        Update Quiz
+                                    </ResponsiveNavLink>
+                                </>
+                            ) : null}
 
                         <div className="pt-4 pb-1 border-t border-gray-700">
                             <div className="px-4">
