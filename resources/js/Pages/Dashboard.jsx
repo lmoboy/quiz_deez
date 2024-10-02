@@ -11,15 +11,15 @@ export default function Dashboard() {
             }
         >
             <Head title="Dashboard" />
-            <div className="py-12 bg-gradient-to-r from-blue-900 h-screen to-indigo-800">
+            <div className="py-12 bg-gradient-to-r from-blue-900 to-indigo-800 h-screen">
                 <div className="grid grid-cols-2 gap-4 max-w-7xl mx-auto sm:px-6 lg:px-8">
                     <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-slate-300">
                             <h2 className="text-3xl font-bold mb-4">
-                                Welcome to QZAR!
+                                Welcome to DeezQuiz!
                             </h2>
                             <p className="mb-6">
-                                QZAR is the perfect place to compete with others
+                            DeezQuiz is the perfect place to compete with others
                                 in quiz guessing!
                             </p>
                         </div>
@@ -27,7 +27,7 @@ export default function Dashboard() {
                     <div className="bg-gradient-to-l from-blue-900 to-indigo-800 overflow-hidden shadow-sm sm:rounded-lg">
                         <div className="p-6 text-slate-300">
                             <h2 className="text-3xl font-bold mb-4">
-                                Explore the Quizzes!
+                                Explore Dee Quizzes!
                             </h2>
                             <p className="mb-6">
                                 We have the largest collection of quizzes out

@@ -63,7 +63,7 @@ export default function Form({ onSubmit }) {
                 {categories ? (
                     categories.map((category) => {
                         return(
-                            <option key={category.id} value={category.value}>
+                            <option key={category.id} value={category.name}>
                                 {category.name}
                             </option>
                         )
@@ -74,20 +74,6 @@ export default function Form({ onSubmit }) {
             </select>
             </div>
 
-            <div className="mb-4">
-                <label htmlFor="trivia_type" className="block text-slate-300 font-semibold mb-2">Select Type:</label>
-                <select
-                    name="trivia_type"
-                    id="trivia_type"
-                    className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    onChange={handleChange}
-                    value={formData.trivia_type}
-                >
-                    <option value="">Any Type</option>
-                    <option value="multiple">Multiple Choice</option>
-                    <option value="boolean">True / False</option>
-                </select>
-            </div>
 
             <button className="bg-blue-500 text-white font-bold py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out" type="submit">
                 Generate Quiz

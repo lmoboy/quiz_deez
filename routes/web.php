@@ -28,15 +28,31 @@ Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/addquiz', function () {
+    return Inertia::render('AddQuiz');
+})->middleware(['auth', 'verified'])->name('addquiz');
+
+Route::get('/updatequiz', function () {
+    return Inertia::render('UpdateQuiz');
+})->middleware(['auth', 'verified'])->name('updatequiz');
+
+
+
+
+
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::post('/api_quiz/highscore', [QuizControllers::class, 'highscore']);
+    Route::get('/api_quiz/all', [QuizControllers::class, 'all']);
+    Route::get('/api_quiz/amount', [QuizControllers::class, 'amount']);
     Route::get('/api_quiz/categories', [QuizControllers::class, 'categories']); //returns a list of all categories
     Route::get('/api_quiz', [QuizControllers::class, 'index']); //returns a list of all quizes
     Route::get('/api_quiz/{id}', [QuizControllers::class, 'show']); //returns a single quiz with specific id
-    Route::put('/api_quiz/{id}', [QuizControllers::class, 'store']);
+    Route::put('/api_quiz/edit/{id}', [QuizControllers::class, 'store']);
     Route::delete('/api_quiz/{id}', [QuizControllers::class, 'destroy']);
     Route::post('/api_quiz', [QuizControllers::class, 'create']);
 

@@ -37,7 +37,7 @@ export default function QuizCard({ quiz, onAnswer, className }) {
     };
 
     return (
-        <div ref={quizCardRef} className={className}>
+        <div ref={quizCardRef} className={className + "  bg-gradient-to-r p-4 to-indigo-500 from-indigo-600 shadow-lg rounded-md"}>
             <h2 className="text-2xl text-slate-300 font-semibold">
                 {decode(template.question)}
             </h2>
@@ -46,7 +46,7 @@ export default function QuizCard({ quiz, onAnswer, className }) {
                     <button
                         key={answer}
                         onClick={() => handleClick(answer)}
-                        className="cursor-pointer hover:scale-105 duration-75 border-2 border-black rounded-lg p-2 mt-2"
+                        className="cursor-pointer hover:scale-105 duration-75 border-2 border-white rounded-lg p-2 mt-2"
                     >
                         {decode(answer)}
                     </button>

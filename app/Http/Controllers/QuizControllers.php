@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use App\Models\Quiz;
@@ -17,6 +18,29 @@ class QuizControllers
         $category = $request->input('category') ?? Quiz::inRandomOrder()->value('category');
         $amount = $request->input('amount') ?? rand(1, 50);
         $quizzes = Quiz::where('category', $category)->inRandomOrder()->limit($amount)->get();
+        $quizzes->map(function ($quiz) {
+            $quiz->incorrect_answers = json_decode($quiz->incorrect_answers);
+            return $quiz;
+        });
+        return response()->json($quizzes);
+    }
+
+    public function highscore(Request $request){
+        $user = User::findOrFail($request->user_id); 
+        if ($user !== null && $request->highscore !== null) {
+            $user->highscore += $request->highscore;
+            $user->save();
+        }
+    }
+
+
+    public function amount(){
+        $amount = Quiz::count();
+        return response($amount);
+    }
+    public function all(Request $request){
+        $category = $request->input('category') ?? null;
+        $quizzes = $category ? Quiz::where('category', $category)->get() : Quiz::all();
         $quizzes->map(function ($quiz) {
             $quiz->incorrect_answers = json_decode($quiz->incorrect_answers);
             return $quiz;

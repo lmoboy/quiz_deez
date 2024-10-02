@@ -37,12 +37,28 @@ export default function Authenticated({ header, children }) {
                             >
                                 Quiz
                             </NavLink>
-                            <NavLink
-                                href={route("test")}
-                                active={route().current("test")}
-                            >
-                                Play Area
-                            </NavLink>
+                            {user.is_admin ? (
+                                <>
+                                    {/* <NavLink
+                                        href={route("test")}
+                                        active={route().current("test")}
+                                    >
+                                        Play Area
+                                    </NavLink> */}
+                                    <NavLink
+                                        href={route("addquiz")}
+                                        active={route().current("addquiz")}
+                                    >
+                                        Add Quiz
+                                    </NavLink>
+                                    <NavLink
+                                        href={route("updatequiz")}
+                                        active={route().current("updatequiz")}
+                                    >
+                                        Update Quiz
+                                    </NavLink>
+                                </>
+                            ) : null}
                         </div>
 
                         <div className="hidden sm:flex sm:items-center">

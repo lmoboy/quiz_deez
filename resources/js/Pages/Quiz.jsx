@@ -1,7 +1,7 @@
 import Form from "@/Components/Form";
 import QuizCard from "@/Components/QuizCard";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 import { useState } from "react";
 import anime from "animejs";
 import Results from "@/Components/Results";
@@ -19,7 +19,7 @@ export default function Quiz() {
     const [current, setCurrent] = useState(0);
     const [correct, setCorrect] = useState([]);
     const [finished, setFinished] = useState(false);
-
+    const user = usePage().props.auth.user;
     const handleAnswer = (isCorrect) => {
         setCurrent(current + 1);
         setCorrect([...correct, isCorrect]);
@@ -40,15 +40,13 @@ export default function Quiz() {
 
     const handleFormSubmit = (formData) => {
         setLoading(true);
+
         fetch(
-            "https://opentdb.com/api.php?amount=" +
+            "/api_quiz" +
+                "?amount=" +
                 formData.trivia_amount +
                 "&category=" +
-                formData.trivia_category +
-                "&difficulty=" +
-                formData.trivia_difficulty +
-                "&type=" +
-                formData.trivia_type
+                formData.trivia_category 
         )
             .then((response) => {
                 if (response.status === 200) {
@@ -63,7 +61,7 @@ export default function Quiz() {
                 }
             })
             .then((data) => {
-                setQuestions(data.results);
+                setQuestions(data);
                 setLoading(false);
             })
             .catch((error) => console.log(error));
@@ -118,11 +116,11 @@ export default function Quiz() {
                     <div className="w-full text-center text-slate-300 mb-4">
                         {questions.length > 0 && !finished && (
                             <p>
-                                Question {current } of {questions.length}
+                                Question {current+1 } of {questions.length}
                             </p>
                         )}
                     </div>
-
+                        {user.highscore}
                     {content}
                 </div>
             </div>
