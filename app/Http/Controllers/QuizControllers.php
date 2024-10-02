@@ -33,6 +33,11 @@ class QuizControllers
         }
     }
 
+public function returnHighscore(){
+    $users = User::orderBy('highscore', 'desc')->take(10)->get();
+    return response()->json($users);
+}
+
 
     public function amount(){
         $amount = Quiz::count();

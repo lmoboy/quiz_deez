@@ -5,6 +5,7 @@ import { Head, usePage } from "@inertiajs/react";
 import { useState } from "react";
 import anime from "animejs";
 import Results from "@/Components/Results";
+import Highscore from "@/Components/HighScore";
 
 /**
  * The Quiz component serves as the main container for the quiz application. It handles the
@@ -113,6 +114,7 @@ export default function Quiz() {
                     id="quiz_container"
                     className="bg-gradient-to-r from-blue-900 to-indigo-800 h-full w-full justify-center items-center flex flex-col"
                 >
+                    <Highscore className={"mb-4 sticky top-0 right-0 flex flex-col"} />
                     <div className="w-full text-center text-slate-300 mb-4">
                         {questions.length > 0 && !finished && (
                             <p>
@@ -120,7 +122,6 @@ export default function Quiz() {
                             </p>
                         )}
                     </div>
-                        {user.highscore}
                     {content}
                 </div>
             </div>

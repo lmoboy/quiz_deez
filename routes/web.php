@@ -46,6 +46,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
+    Route::get('/api_quiz/highscore', [QuizControllers::class, 'returnHighscore']);
     Route::post('/api_quiz/highscore', [QuizControllers::class, 'highscore']);
     Route::get('/api_quiz/all', [QuizControllers::class, 'all']);
     Route::get('/api_quiz/amount', [QuizControllers::class, 'amount']);

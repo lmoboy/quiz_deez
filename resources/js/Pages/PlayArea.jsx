@@ -1,14 +1,12 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import Highscore from "@/Components/Highscore";
+
+
 import { Head, router } from "@inertiajs/react";
 import { useEffect, useState } from "react";
 
 function PlayArea(...prop) {
-    let ok = 1;
-    console.log("pre-effect")
-    useEffect(() => {
-        console.log("effect")
-    },[ok])
-    console.log("post-effect")
+
 
     return (
         <AuthenticatedLayout
@@ -17,7 +15,7 @@ function PlayArea(...prop) {
             }
         >
             <Head title="Update quiz" />
-
+            <Highscore></Highscore>
         </AuthenticatedLayout>
     );
 }
