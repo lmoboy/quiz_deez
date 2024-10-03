@@ -128,7 +128,7 @@ public function returnHighscore(){
     {
         $quiz = Quiz::findorfail($id);
         $quiz->delete();
-        return response(200);
+        // return response(200);
     }
 
     public function categories()
@@ -139,6 +139,7 @@ public function returnHighscore(){
                 ['value' => "21", 'name' => "Sports"],
                 ['value' => "22", 'name' => "Geography"],
                 ['value' => "23", 'name' => "History"],
+                ['value' => "27", 'name' => "Animals"],
             ]
         );
     }

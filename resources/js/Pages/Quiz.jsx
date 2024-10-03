@@ -20,7 +20,7 @@ export default function Quiz() {
     const [current, setCurrent] = useState(0);
     const [correct, setCorrect] = useState([]);
     const [finished, setFinished] = useState(false);
-    const user = usePage().props.auth.user;
+
     const handleAnswer = (isCorrect) => {
         setCurrent(current + 1);
         setCorrect([...correct, isCorrect]);
@@ -29,7 +29,6 @@ export default function Quiz() {
         }
     };
 
-    
     const reset = () => {
         setQuestions([]);
         setLoading(false);
@@ -37,7 +36,6 @@ export default function Quiz() {
         setCorrect([]);
         setFinished(false);
     };
-
 
     const handleFormSubmit = (formData) => {
         setLoading(true);
@@ -47,7 +45,7 @@ export default function Quiz() {
                 "?amount=" +
                 formData.trivia_amount +
                 "&category=" +
-                formData.trivia_category 
+                formData.trivia_category
         )
             .then((response) => {
                 if (response.status === 200) {
@@ -68,7 +66,7 @@ export default function Quiz() {
             .catch((error) => console.log(error));
     };
 
-    const progress = Math.round(((current) / questions.length) * 100);
+    const progress = Math.round((current / questions.length) * 100);
 
     let content;
     if (loading && !finished) {
@@ -88,14 +86,18 @@ export default function Quiz() {
                     quiz={element}
                     key={key}
                     onAnswer={handleAnswer}
-                    className={
-                        (direction ? " visible " : " hidden ") + " quiz"
-                    }
+                    className={(direction ? " visible " : " hidden ") + " quiz"}
                 />
             );
         });
     } else if (!loading && finished) {
-        content = <Results correct={correct} questions={questions} playAgain={reset}></Results>;
+        content = (
+            <Results
+                correct={correct}
+                questions={questions}
+                playAgain={reset}
+            ></Results>
+        );
     } else {
         content = <Form onSubmit={handleFormSubmit} />;
     }
@@ -114,11 +116,18 @@ export default function Quiz() {
                     id="quiz_container"
                     className="bg-gradient-to-r from-blue-900 to-indigo-800 h-full w-full justify-center items-center flex flex-col"
                 >
-                    <Highscore className={"mb-4 sticky top-0 right-0 flex flex-col"} />
+                    {finished && (
+                        <Highscore
+                            className={
+                                "mb-4 sticky top-0 right-0 flex flex-col"
+                            }
+                        />
+                    )}
+
                     <div className="w-full text-center text-slate-300 mb-4">
                         {questions.length > 0 && !finished && (
                             <p>
-                                Question {current+1 } of {questions.length}
+                                Question {current + 1} of {questions.length}
                             </p>
                         )}
                     </div>

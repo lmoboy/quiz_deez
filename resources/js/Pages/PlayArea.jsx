@@ -15,7 +15,7 @@ function PlayArea(...prop) {
             }
         >
             <Head title="Update quiz" />
-            <Highscore></Highscore>
+            <Highscore/>
         </AuthenticatedLayout>
     );
 }

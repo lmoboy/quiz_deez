@@ -15,6 +15,9 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
+
+        User::factory(8)->create();
+
         User::factory()->create(
             [
                 'name' => 'admin',
@@ -27,9 +30,9 @@ class DatabaseSeeder extends Seeder
 
 
 
-        Quiz::factory()->count(200)->state(new Sequence(
+        Quiz::factory()->count(250)->state(new Sequence(
             [
-                "owner_id"=>1,
+                "owner_id" => 1,
 
                 "category" => "Geography",
                 "question" => "Which is the world&#039;s longest river?",
@@ -2098,7 +2101,68 @@ class DatabaseSeeder extends Seeder
                     "Kimi Raikkonen",
                     "Lewis Hamilton",
                 ]),
-            ]
+            ],
+            [
+                "category" => "Animals",
+                "question" => "What colour is the female blackbird?",
+                "correct_answer" => "Brown",
+                "incorrect_answers" => json_encode(["Black", "White", "Yellow"])
+            ],
+            [
+                "category" => "Animals",
+                "question" => "Which of these is a colony of polyps and not a jellyfish?",
+                "correct_answer" => "Portuguese Man-of-War",
+                "incorrect_answers" => json_encode(["Sea Wasp", "Irukandji", "Sea Nettle"])
+            ],
+
+            ["category" => "Animals", "question" => "The freshwater amphibian, the Axolotl, can regrow it&#039;s limbs.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "By definition, where does an abyssopelagic animal live?", "correct_answer" => "At the bottom of the ocean", "incorrect_answers" => json_encode(["In the desert", "On top of a mountain", "Inside a tree"])],
+            ["category" => "Animals", "question" => "A slug&rsquo;s blood is green.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What is the scientific name for modern day humans?", "correct_answer" => "Homo Sapiens", "incorrect_answers" => json_encode(["Homo Ergaster", "Homo Erectus", "Homo Neanderthalensis"])],
+            ["category" => "Animals", "question" => "A bear does NOT defecate during hibernation. ", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "An octopus can fit through any hole larger than its beak.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "Which species is a &quot;mountain chicken&quot;?", "correct_answer" => "Frog", "incorrect_answers" => json_encode(["Chicken", "Horse", "Fly"])],
+            ["category" => "Animals", "question" => "What are rhino&#039;s horn made of?", "correct_answer" => "Keratin", "incorrect_answers" => json_encode(["Bone", "Ivory", "Skin"])],
+            ["category" => "Animals", "question" => "What color\/colour is a polar bear&#039;s skin?", "correct_answer" => "Black", "incorrect_answers" => json_encode(["White", "Pink", "Green"])],
+            ["category" => "Animals", "question" => "To which biological phylum do all mammals, birds and reptiles belong?", "correct_answer" => "Chordata", "incorrect_answers" => json_encode(["Echinodermata", "Annelida", "Placazoa"])],
+            ["category" => "Animals", "question" => "How many known living species of hyenas are there?", "correct_answer" => "4", "incorrect_answers" => json_encode(["8", "2", "6"])],
+            ["category" => "Animals", "question" => "What is the scientific name for the &quot;Polar Bear&quot;?", "correct_answer" => "Ursus Maritimus", "incorrect_answers" => json_encode(["Polar Bear", "Ursus Spelaeus", "Ursus Arctos"])],
+            ["category" => "Animals", "question" => "What is the name of the family that the domestic cat is a member of?", "correct_answer" => "Felidae", "incorrect_answers" => json_encode(["Felinae", "Felis", "Cat"])],
+            ["category" => "Animals", "question" => "Kangaroos keep food in their pouches next to their children.", "correct_answer" => "False", "incorrect_answers" => json_encode(["True"])],
+            ["category" => "Animals", "question" => "What is Grumpy Cat&#039;s real name?", "correct_answer" => "Tardar Sauce", "incorrect_answers" => json_encode(["Sauce", "Minnie", "Broccoli"])],
+            ["category" => "Animals", "question" => "What is the scientific name of the cheetah?", "correct_answer" => "Acinonyx jubatus", "incorrect_answers" => json_encode(["Panthera onca", "Lynx rufus", "Felis catus"])],
+            ["category" => "Animals", "question" => "A caterpillar has more muscles than humans do.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What is the name for a male bee that comes from an unfertilized egg?", "correct_answer" => "Drone", "incorrect_answers" => json_encode(["Soldier", "Worker", "Male"])],
+            ["category" => "Animals", "question" => "You can tell the age of a ladybird by counting the spots on his back.", "correct_answer" => "False", "incorrect_answers" => json_encode(["True"])],
+            ["category" => "Animals", "question" => "The K\u0101k\u0101p\u014d is a large, flightless, nocturnal parrot native to which country?", "correct_answer" => "New Zealand", "incorrect_answers" => json_encode(["South Africa", "Australia", "Madagascar"])],
+            ["category" => "Animals", "question" => "How many legs do butterflies have?", "correct_answer" => "6", "incorrect_answers" => json_encode(["2", "4", "0"])],
+            ["category" => "Animals", "question" => "Cashmere is the wool from which kind of animal?", "correct_answer" => "Goat", "incorrect_answers" => json_encode(["Sheep", "Camel", "Llama"])],
+            ["category" => "Animals", "question" => "Finnish Lapphund dogs were used for herding reindeer.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What is the name of the copper-rich protein that creates the blue blood in the Antarctic octopus?", "correct_answer" => "Hemocyanin", "incorrect_answers" => json_encode(["Cytochrome", "Iron", "Methionine"])],
+            ["category" => "Animals", "question" => "Which of these species is not extinct?", "correct_answer" => "Komodo dragon", "incorrect_answers" => json_encode(["Japanese sea lion", "Tasmanian tiger", "Saudi gazelle"])],
+            ["category" => "Animals", "question" => "What type of creature is a Bonobo?", "correct_answer" => "Ape", "incorrect_answers" => json_encode(["Lion", "Parrot", "Wildcat"])],
+            ["category" => "Animals", "question" => "What is the fastest animal?", "correct_answer" => "Peregrine Falcon", "incorrect_answers" => json_encode(["Golden Eagle", "Cheetah", "Horsefly"])],
+            ["category" => "Animals", "question" => "What do you call a baby bat?", "correct_answer" => "Pup", "incorrect_answers" => json_encode(["Cub", "Chick", "Kid"])],
+            ["category" => "Animals", "question" => "Which species of Brown Bear is not extinct?", "correct_answer" => "Syrian Brown Bear", "incorrect_answers" => json_encode(["California Grizzly Bear", "Atlas Bear", "Mexican Grizzly Bear"])],
+            ["category" => "Animals", "question" => "What is the scientific name of the Common Chimpanzee?", "correct_answer" => "Pan troglodytes", "incorrect_answers" => json_encode(["Gorilla gorilla", "Pan paniscus", "Panthera leo"])],
+            ["category" => "Animals", "question" => "The Killer Whale is considered a type of dolphin.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What scientific suborder does the family Hyaenidae belong to?", "correct_answer" => "Feliformia", "incorrect_answers" => json_encode(["Haplorhini", "Caniformia", "Ciconiiformes"])],
+            ["category" => "Animals", "question" => "In 2016, the IUCN reclassified the status of Giant Pandas from endangered to vulnerable.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "The internet browser Firefox is named after the Red Panda.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What is the collective noun for vultures?", "correct_answer" => "Wake", "incorrect_answers" => json_encode(["Ambush", "Building", "Gaze"])],
+            ["category" => "Animals", "question" => "Hippocampus is the Latin name for which marine creature?", "correct_answer" => "Seahorse", "incorrect_answers" => json_encode(["Dolphin", "Whale", "Octopus"])],
+            ["category" => "Animals", "question" => "What was the name of the Ethiopian Wolf before they knew it was related to wolves?", "correct_answer" => "Simien Jackel", "incorrect_answers" => json_encode(["Ethiopian Coyote", "Amharic Fox", "Canis Simiensis"])],
+            ["category" => "Animals", "question" => "Which animal was part of an Russian domestication experiment in 1959?", "correct_answer" => "Foxes", "incorrect_answers" => json_encode(["Pigeons", "Bears", "Alligators"])],
+            ["category" => "Animals", "question" => "How many teeth does an adult rabbit have?", "correct_answer" => "28", "incorrect_answers" => json_encode(["30", "26", "24"])],
+            ["category" => "Animals", "question" => "Rabbits are carnivores.", "correct_answer" => "False", "incorrect_answers" => json_encode(["True"])],
+            ["category" => "Animals", "question" => "What scientific family does the Aardwolf belong to?", "correct_answer" => "Hyaenidae", "incorrect_answers" => json_encode(["Canidae", "Felidae", "Eupleridae"])],
+            ["category" => "Animals", "question" => "For what reason would a spotted hyena &quot;laugh&quot;?", "correct_answer" => "Nervousness", "incorrect_answers" => json_encode(["Excitement", "Aggression", "Exhaustion"])],
+            ["category" => "Animals", "question" => "A flock of crows is known as a homicide.", "correct_answer" => "False", "incorrect_answers" => json_encode(["True"])],
+            ["category" => "Animals", "question" => "What type of animal is a natterjack?", "correct_answer" => "Toad", "incorrect_answers" => json_encode(["Bird", "Fish", "Insect"])],
+            ["category" => "Animals", "question" => "What is the world&#039;s longest venomous snake?", "correct_answer" => "King Cobra", "incorrect_answers" => json_encode(["Green Anaconda", "Inland Taipan", "Yellow Bellied Sea Snake"])],
+            ["category" => "Animals", "question" => "The Axolotl is an amphibian that can spend its whole life in a larval state.", "correct_answer" => "True", "incorrect_answers" => json_encode(["False"])],
+            ["category" => "Animals", "question" => "What is the collective noun for bears?", "correct_answer" => "Sloth", "incorrect_answers" => json_encode(["Drove", "Tribe", "Husk"])],
+            ["category" => "Animals", "question" => "The dish Fugu, is made from what family of fish?", "correct_answer" => "Pufferfish", "incorrect_answers" => json_encode(["Bass", "Salmon", "Mackerel"])]
         ))->create();
 
 
