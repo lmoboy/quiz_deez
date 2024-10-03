@@ -124,14 +124,11 @@ public function returnHighscore(){
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $request->validate([
-            'id' => 'required',
-        ]);
-        $quiz = Quiz::findorfail($request->id);
-
+        $quiz = Quiz::findorfail($id);
         $quiz->delete();
+        return response(200);
     }
 
     public function categories()
